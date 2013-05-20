@@ -11,3 +11,10 @@ image_effect_delete:
     _form: '\Drupal\image\Form\ImageEffectDeleteForm'
   requirements:
     _permission: 'administer image styles'
+
+image.style.deliver:
+  pattern: '/system/files/styles/{image_style}/{scheme}'
+  defaults:
+    _controller: '\Drupal\image\Controller\ImageStyleController::deliver'
+  requirements:
+    _permission: 'access content'
