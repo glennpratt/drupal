@@ -633,8 +633,7 @@ function system_menu() {
   );
   $items['system/ajax'] = array(
     'title' => 'AHAH callback',
-    'page callback' => 'ajax_form_callback',
-    'access callback' => TRUE,
+    'route_name' => 'system.ajax',
     'theme callback' => 'ajax_base_page_theme',
     'type' => MENU_CALLBACK,
     'file path' => 'core/includes',
