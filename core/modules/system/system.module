@@ -636,8 +636,6 @@ function system_menu() {
     'route_name' => 'system.ajax',
     'theme callback' => 'ajax_base_page_theme',
     'type' => MENU_CALLBACK,
-    'file path' => 'core/includes',
-    'file' => 'form.inc',
   );
   $items['system/timezone'] = array(
     'title' => 'Time zone',
