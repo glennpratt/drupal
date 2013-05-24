@@ -92,28 +92,15 @@ function image_style_entity_uri(ImageStyle $style) {
 function image_menu() {
   $items = array();
 
-  // Generate image derivatives of publicly available files.
-  // If clean URLs are disabled, image derivatives will always be served
-  // through the menu system.
-  // If clean URLs are enabled and the image derivative already exists,
-  // PHP will be bypassed.
-  $directory_path = file_stream_wrapper_get_instance_by_scheme('public')->getDirectoryPath();
-  $items[$directory_path . '/styles/%image_style'] = array(
-    'title' => 'Generate image style',
-    'page callback' => 'image_style_deliver',
-    'page arguments' => array(count(explode('/', $directory_path)) + 1),
-    'access callback' => TRUE,
-    'type' => MENU_CALLBACK,
-  );
-  // Generate and deliver image derivatives of private files.
-  // These image derivatives are always delivered through the menu system.
-  $items['system/files/styles/%image_style'] = array(
-    'title' => 'Generate image style',
-    'page callback' => 'image_style_deliver',
-    'page arguments' => array(3),
-    'access callback' => TRUE,
-    'type' => MENU_CALLBACK,
-  );
+//  // Generate and deliver image derivatives of private files.
+//   // These image derivatives are always delivered through the menu system.
+//   $items['system/files/styles/%image_style'] = array(
+//     'title' => 'Generate image style',
+//     'page callback' => 'image_style_deliver',
+//     'page arguments' => array(3),
+//     'access callback' => TRUE,
+//     'type' => MENU_CALLBACK,
+//   );
   $items['admin/config/media/image-styles'] = array(
     'title' => 'Image styles',
     'description' => 'Configure styles that can be used for resizing or adjusting images on display.',

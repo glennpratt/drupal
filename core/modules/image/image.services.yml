@@ -1,5 +1,5 @@
 services:
-  image.path_subscriber:
+  image.path_processor:
     class: Drupal\image\PathProcessor
     tags:
-      - { name: path_processor_inbound, priority: 800 }
+      - { name: path_processor_inbound, priority: 100 }
