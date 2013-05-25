@@ -497,7 +497,7 @@ function form_state_defaults() {
  *   The newly built form.
  *
  * @see drupal_process_form()
- * @see Drupal\system\FormAjaxController::content()
+ * @see \Drupal\system\FormAjaxController::content()
  */
 function drupal_rebuild_form($form_id, &$form_state, $old_form = NULL) {
   $form = drupal_retrieve_form($form_id, $form_state);
@@ -1293,9 +1293,9 @@ function drupal_validate_form($form_id, &$form, &$form_state) {
  * - If $form_state['rebuild'] is TRUE, the form is being rebuilt, and no
  *   redirection is done.
  * - If $form_state['no_redirect'] is TRUE, redirection is disabled. This is
- *   set, for instance, by Drupal\system\FormAjaxController::getForm() prevent
- *   redirection in Ajax callbacks. $form_state['no_redirect'] should never be
- *   set or altered by form builder functions or form validation/submit
+ *   set, for instance, by \Drupal\system\FormAjaxController::getForm() to
+ *   prevent redirection in Ajax callbacks. $form_state['no_redirect'] should
+ *   never be set or altered by form builder functions or form validation/submit
  *   handlers.
  * - If $form_state['redirect'] is set to FALSE, redirection is disabled.
  * - If none of the above conditions has prevented redirection, then the

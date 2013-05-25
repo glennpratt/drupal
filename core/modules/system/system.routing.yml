@@ -1,5 +1,5 @@
 system.ajax:
-  pattern: 'system/ajax'
+  pattern: '/system/ajax'
   defaults:
     _controller: '\Drupal\system\Controller\FormAjaxController::content'
   requirements:

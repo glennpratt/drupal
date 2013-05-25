@@ -23,7 +23,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
  * forms, it can be used with the #ajax property.
  * The #ajax property can be used to bind events to the Ajax framework. By
  * default, #ajax uses 'system/ajax' as its path for submission and thus calls
- * Drupal\system\FormAjaxController::content() and a defined #ajax['callback']
+ * \Drupal\system\FormAjaxController::content() and a defined #ajax['callback']
  * function. However, you may optionally specify a different path to request or
  * a different callback function to invoke, which can return updated HTML or can
  * also return a richer set of
@@ -38,17 +38,18 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
  *     that element.
  *   - The browser submits an HTTP POST request to the 'system/ajax' Drupal
  *     path.
- *   - Controller 'system/ajax', Drupal\system\FormAjaxController::content(),
- *     calls drupal_process_form() to process the form submission and rebuild
- *     the form if necessary. The form is processed in much the same way as if
- *     it were submitted without Ajax, with the same #process functions and
- *     validation and submission handlers called in either case, making it easy
- *     to create Ajax-enabled forms that degrade gracefully when JavaScript is
- *     disabled.
- *   - After form processing is complete, Drupal\system\FormAjaxController::content()
- *     calls the function named by #ajax['callback'], which returns the form
- *     element that has been updated and needs to be returned to the browser, or
- *     alternatively, an array of custom Ajax commands.
+ *   - The controller for the route '/system/ajax',
+ *     \Drupal\system\FormAjaxController::content(), calls drupal_process_form()
+ *     to process the form submission and rebuild the form if necessary. The
+ *     form is processed in much the same way as if it were submitted without
+ *     Ajax, with the same #process functions and validation and submission
+ *     handlers called in either case, making it easy to create Ajax-enabled
+ *     forms that degrade gracefully when JavaScript is disabled.
+ *   - After form processing is complete,
+ *     \Drupal\system\FormAjaxController::content() calls the function named by
+ *     #ajax['callback'], which returns the form element that has been updated
+ *     and needs to be returned to the browser, or alternatively, an array of
+ *     custom Ajax commands.
  *   - The array is serialized using ajax_render() and sent to the browser.
  *   - The browser unserializes the returned JSON string into an array of
  *     command objects and executes each command, resulting in the old page
@@ -125,7 +126,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
  * - #ajax['path']: The menu path to use for the request. This is often omitted
  *   and the default is used. This path should map
  *   to a menu page callback that returns data using ajax_render(). Defaults to
- *   'system/ajax', which invokes Drupal\system\FormAjaxController::content(),
+ *   'system/ajax', which invokes \Drupal\system\FormAjaxController::content(),
  *   eventually calling the function named in #ajax['callback']. If you use a
  *   custom path, you must set up the menu entry and handle the entire callback
  *   in your own code.

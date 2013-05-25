@@ -19,13 +19,13 @@ class FormAjaxController {
   /**
    * Handle form AHAH request.
    *
-   * @param Symfony\Component\HttpFoundation\Request $request
+   * @param \Symfony\Component\HttpFoundation\Request $request
    *  The current request object.
    *
-   * @return Symfony\Component\HttpFoundation\Response
+   * @return \Symfony\Component\HttpFoundation\Response
    *   A Symfony response object.
    *
-   * @throws Symfony\Component\HttpKernel\Exception\HttpExceptionInterface
+   * @throws \Symfony\Component\HttpKernel\Exception\HttpExceptionInterface
    */
   public function content(Request $request) {
     list($form, $form_state) = $this->getForm($request);
@@ -52,7 +52,7 @@ class FormAjaxController {
    * This will load a form from the form cache used during Ajax operations. It
    * pulls the form info from the request body.
    *
-   * @param Symfony\Component\HttpFoundation\Request $request
+   * @param \Symfony\Component\HttpFoundation\Request $request
    *  The current request object.
    *
    * @return

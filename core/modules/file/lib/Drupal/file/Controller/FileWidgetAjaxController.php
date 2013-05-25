@@ -7,6 +7,7 @@
 
 namespace Drupal\file\Controller;
 
+use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\system\Controller\FormAjaxController;
@@ -22,17 +23,18 @@ class FileWidgetAjaxController extends FormAjaxController {
   /**
    * Handle form AHAH request.
    *
-   * @param Symfony\Component\HttpFoundation\Request $request
+   * @param \Symfony\Component\HttpFoundation\Request $request
    *  The current request object.
    *
-   * @return Symfony\Component\HttpFoundation\Response
+   * @return \Symfony\Component\HttpFoundation\Response
    *   A Symfony response object.
    */
   public function upload(Request $request) {
     $form_parents = explode('/', $request->query->get('element_parents'));
     $form_build_id = $request->query->get('form_build_id');
+    $request_form_build_id = $request->request->get('form_build_id');
 
-    if (empty($form_build_id)) {
+    if (empty($request_form_build_id) || $form_build_id !== $request_form_build_id) {
       // Invalid request.
       drupal_set_message(t('An unrecoverable error occurred. The uploaded file likely exceeded the maximum file size (@size) that this server supports.', array('@size' => format_size(file_upload_max_size()))), 'error');
       $response = new AjaxResponse();
@@ -50,19 +52,14 @@ class FileWidgetAjaxController extends FormAjaxController {
     }
 
     // Get the current element and count the number of files.
-    $current_element = $form;
-    foreach ($form_parents as $parent) {
-      $current_element = $current_element[$parent];
-    }
+    $current_element = NestedArray::getValue($form, $form_parents);
     $current_file_count = isset($current_element['#file_upload_delta']) ? $current_element['#file_upload_delta'] : 0;
 
     // Process user input. $form and $form_state are modified in the process.
     drupal_process_form($form['#form_id'], $form, $form_state);
 
     // Retrieve the element to be rendered.
-    foreach ($form_parents as $parent) {
-      $form = $form[$parent];
-    }
+    $form = NestedArray::getValue($form, $form_parents);
 
     // Add the special Ajax class if a new file was added.
     if (isset($form['#file_upload_delta']) && $current_file_count < $form['#file_upload_delta']) {
