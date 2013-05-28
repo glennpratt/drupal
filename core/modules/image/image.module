@@ -92,15 +92,6 @@ function image_style_entity_uri(ImageStyle $style) {
 function image_menu() {
   $items = array();
 
-//  // Generate and deliver image derivatives of private files.
-//   // These image derivatives are always delivered through the menu system.
-//   $items['system/files/styles/%image_style'] = array(
-//     'title' => 'Generate image style',
-//     'page callback' => 'image_style_deliver',
-//     'page arguments' => array(3),
-//     'access callback' => TRUE,
-//     'type' => MENU_CALLBACK,
-//   );
   $items['admin/config/media/image-styles'] = array(
     'title' => 'Image styles',
     'description' => 'Configure styles that can be used for resizing or adjusting images on display.',

@@ -35,7 +35,7 @@ class ImageStyleController {
     //$target = implode('/', $args);
     $target = $request->query->get('path');
     
-    return new Response(json_encode(get_defined_vars()));
+    //return new Response(json_encode(get_defined_vars()));
   
     // Check that the style is defined, the scheme is valid, and the image
     // derivative token is valid. (Sites which require image derivatives to be
