@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Definition of Drupal\system\FormAjaxController.
+ * Contains \Drupal\system\FormAjaxController.
  */
 
 namespace Drupal\system\Controller;
@@ -17,7 +17,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 class FormAjaxController {
 
   /**
-   * Handle form AHAH request.
+   * Handle form AJAX request.
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
    *  The current request object.
@@ -64,7 +64,7 @@ class FormAjaxController {
    *
    * @throws Symfony\Component\HttpKernel\Exception\HttpExceptionInterface
    */
-  public function getForm(Request $request) {
+  protected function getForm(Request $request) {
     $form_state = form_state_defaults();
     $form_build_id = $request->request->get('form_build_id');
 

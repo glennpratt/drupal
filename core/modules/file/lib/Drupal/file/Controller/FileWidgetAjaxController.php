@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Definition of Drupal\file\FileWidgetAjaxController.
+ * Contains \Drupal\file\FileWidgetAjaxController.
  */
 
 namespace Drupal\file\Controller;
@@ -21,7 +21,7 @@ use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 class FileWidgetAjaxController extends FormAjaxController {
 
   /**
-   * Handle form AHAH request.
+   * Handle form AJAX request.
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
    *  The current request object.
@@ -80,15 +80,15 @@ class FileWidgetAjaxController extends FormAjaxController {
   }
 
   /**
-   * Ajax callback: Retrieves upload progress.
+   * Handle AJAX upload progress request.
    *
    * @param $key
    *   The unique key for this upload process.
    */
   public function progress($key) {
     $progress = array(
-        'message' => t('Starting upload...'),
-        'percentage' => -1,
+      'message' => t('Starting upload...'),
+      'percentage' => -1,
     );
 
     $implementation = file_progress_implementation();
