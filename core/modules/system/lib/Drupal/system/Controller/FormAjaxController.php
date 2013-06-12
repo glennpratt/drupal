@@ -55,7 +55,7 @@ class FormAjaxController {
    * @param \Symfony\Component\HttpFoundation\Request $request
    *  The current request object.
    *
-   * @return
+   * @return array
    *   An array containing the $form and $form_state. Use the list() function
    *   to break these apart:
    *   @code

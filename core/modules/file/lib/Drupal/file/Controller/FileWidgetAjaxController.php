@@ -82,8 +82,11 @@ class FileWidgetAjaxController extends FormAjaxController {
   /**
    * Handle AJAX upload progress request.
    *
-   * @param $key
+   * @param string $key
    *   The unique key for this upload process.
+   *
+   * @return \Symfony\Component\HttpFoundation\Response
+   *   A Symfony response object.
    */
   public function progress($key) {
     $progress = array(
