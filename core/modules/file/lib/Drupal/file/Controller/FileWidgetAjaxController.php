@@ -70,7 +70,8 @@ class FileWidgetAjaxController extends FormAjaxController {
       $form['#suffix'] .= '<span class="ajax-new-content"></span>';
     }
 
-    $form['#prefix'] .= theme('status_messages');
+    $status_messages = array('#theme' => 'status_messages');
+    $form['#prefix'] .= drupal_render($status_messages);
     $output = drupal_render($form);
     $js = drupal_add_js();
     $settings = drupal_merge_js_settings($js['settings']['data']);
